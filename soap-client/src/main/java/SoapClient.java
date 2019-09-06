@@ -1,6 +1,4 @@
-import ru.geekbrains.jsf.UserRepr;
-import ru.geekbrains.jsf.UserService;
-import ru.geekbrains.jsf.UserServiceWs;
+import ru.geekbrains.jsf.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,16 +6,22 @@ import java.net.URL;
 public class SoapClient {
 
     public static void main(String[] args) throws MalformedURLException {
-        URL url = new URL("http://localhost:8080/myfirstwebapp/UserService/UserServiceBean?WSDL");
-        UserService userService = new UserService(url);
+        URL urlUser = new URL("http://localhost:8080/myfirstwebapp/UserService/UserServiceBean?WSDL");
+        UserService userService = new UserService(urlUser);
         UserServiceWs userServiceBeanPort = userService.getUserServiceBeanPort();
 
         userServiceBeanPort.getAllUsers()
                 .forEach(u -> System.out.printf("%d\t%s%n", u.getId(), u.getLogin()));
+      //  System.out.println(userServiceBeanPort.findById(1).getLogin());
 
+        URL urlItem = new URL("http://localhost:8080/myfirstwebapp/ItemService/ItemServiceBean?WSDL");
+        ItemService itemService=new ItemService(urlItem);
+        ItemServiceWs itemServiceBeanPort=itemService.getItemServiceBeanPort();
 
-        //UserRepr user=new UserRepr();
-        System.out.println(userServiceBeanPort.findById(1).getLogin);
+        itemServiceBeanPort.getAllItems().forEach(i-> System.out.printf("%s\t%s%s%n",i.getName(),i.getCategory(),i.getVendor()));
+        itemServiceBeanPort.delete(3);
+        System.out.println("Удалил один товар");
+        itemServiceBeanPort.getAllItems().forEach(i-> System.out.printf("%s\t%s%s%n",i.getName(),i.getCategory(),i.getVendor()));
 
     }
 }

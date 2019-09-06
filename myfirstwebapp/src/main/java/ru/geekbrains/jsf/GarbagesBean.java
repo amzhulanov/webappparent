@@ -2,6 +2,7 @@ package ru.geekbrains.jsf;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.geekbrains.jsf.localBean.ItemsServiceLocalBean;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
@@ -19,8 +20,9 @@ public class GarbagesBean {
 
     @Inject
     private OrderService orderService;
+
     @Inject
-    private ItemService itemService;
+    private ItemsServiceLocalBean itemServiceBean;
 
 
     private GarbageRepr bean_item;
@@ -59,7 +61,7 @@ public class GarbagesBean {
                 item.setName(garbageRepr.getName());
                 item.setCategory(garbageRepr.getCategory());
                 item.setVendor(garbageRepr.getVendor());
-                itemService.merge(item);
+                itemServiceBean.merge(item);
                 service.delete(garbageRepr.getId());
                 return "/items.xhtml?faces-redirect=true";
             }

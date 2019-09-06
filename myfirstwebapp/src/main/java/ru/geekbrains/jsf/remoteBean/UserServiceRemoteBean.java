@@ -1,9 +1,9 @@
-package ru.geekbrains.jsf;
+package ru.geekbrains.jsf.remoteBean;
+
+import ru.geekbrains.jsf.UserRepr;
 
 import javax.ejb.Remote;
 import java.util.List;
-
-//интерфейс для EJB клиента
 
 @Remote
 public interface UserServiceRemoteBean {

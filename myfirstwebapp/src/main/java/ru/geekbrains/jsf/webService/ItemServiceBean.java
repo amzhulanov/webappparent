@@ -1,18 +1,24 @@
-package ru.geekbrains.jsf;
+package ru.geekbrains.jsf.webService;
 
+import ru.geekbrains.jsf.ItemRepr;
+import ru.geekbrains.jsf.localBean.ItemsServiceLocalBean;
+import ru.geekbrains.jsf.remoteBean.ItemServiceRemoteBean;
+import ru.geekbrains.jsf.webService.ItemServiceWs;
 import ru.geekbrains.persist.item.Item;
 import ru.geekbrains.persist.repository.ItemRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
+import javax.jws.WebService;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
+@WebService(endpointInterface = "ru.geekbrains.jsf.webService.ItemServiceWs", serviceName = "ItemService")
 @TransactionManagement(javax.ejb.TransactionManagementType.BEAN)
-public class ItemService {
+public class ItemServiceBean implements ItemServiceWs, ItemsServiceLocalBean, ItemServiceRemoteBean {
 
     @EJB
     private ItemRepository itemRepository;

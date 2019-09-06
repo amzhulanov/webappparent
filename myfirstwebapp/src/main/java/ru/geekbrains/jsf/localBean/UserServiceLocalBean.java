@@ -1,9 +1,9 @@
-package ru.geekbrains.jsf;
+package ru.geekbrains.jsf.localBean;
+
+import ru.geekbrains.jsf.UserRepr;
 
 import javax.ejb.Local;
 import java.util.List;
-
-//интерфейс для EJB клиента
 
 @Local
 public interface UserServiceLocalBean {

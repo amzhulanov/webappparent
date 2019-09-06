@@ -2,6 +2,7 @@ package ru.geekbrains.jsf;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.geekbrains.jsf.localBean.ItemsServiceLocalBean;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,7 +17,7 @@ public class ItemsBean implements Serializable {
     private Logger logger = LoggerFactory.getLogger(ItemsBean.class);
 
     @Inject
-    private ItemService itemService;
+    private ItemsServiceLocalBean itemServiceBean;
 
     @Inject
     private GarbageService garbageService;
@@ -32,7 +33,7 @@ public class ItemsBean implements Serializable {
     }
 
     public List<ItemRepr> getAllItems() {
-        return itemService.getAllItems();
+        return itemServiceBean.getAllItems();
     }
 
     public String editItem(ItemRepr item) {
@@ -42,7 +43,7 @@ public class ItemsBean implements Serializable {
 
     public void deleteItem(ItemRepr item) {
         garbageService.merge(new GarbageRepr(item));
-        itemService.delete(item.getId());
+        itemServiceBean.delete(item.getId());
     }
 
     public String createItem() {
@@ -51,7 +52,7 @@ public class ItemsBean implements Serializable {
     }
 
     public String saveItem() {
-        itemService.merge(this.item);
+        itemServiceBean.merge(this.item);
         return "/items.xhtml?faces-redirect=true";
     }
 }

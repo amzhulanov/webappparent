@@ -1,5 +1,7 @@
 package ru.geekbrains.jsf;
 
+import ru.geekbrains.jsf.localBean.UserServiceLocalBean;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;

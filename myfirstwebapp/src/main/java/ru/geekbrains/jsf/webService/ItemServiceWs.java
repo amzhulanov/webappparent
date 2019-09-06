@@ -1,4 +1,6 @@
-package ru.geekbrains.jsf;
+package ru.geekbrains.jsf.webService;
+
+import ru.geekbrains.jsf.ItemRepr;
 
 import javax.ejb.Local;
 import javax.jws.WebMethod;
@@ -7,13 +9,13 @@ import java.util.List;
 
 @Local
 @WebService
-public interface UserServiceWs {
+public interface ItemServiceWs {
 
     @WebMethod
-    List<UserRepr> getAllUsers();
+    List<ItemRepr> getAllItems();
 
     @WebMethod
-    UserRepr findById(int id);
+    ItemRepr findById(int id);
 
     @WebMethod
     void delete(int id);
