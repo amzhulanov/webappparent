@@ -9,6 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <artifactId>jax-ws</artifactId>
 
     <build>
@@ -25,9 +32,9 @@
                             <goal>wsimport</goal>
                         </goals>
                             <configuration>
-                                <wsdUrls>
-                                    <wsdUrl>http://localhost:8080/myfirstwebapp/UserServiceWsImpl?WSDL</wsdUrl>
-                                </wsdUrls>
+                                <wsdlUrls>
+                                    <wsdlUrl>http://localhost:8080/myfirstwebapp/UserService/UserServiceBean?WSDL</wsdlUrl>
+                                </wsdlUrls>
 
                             </configuration>
 

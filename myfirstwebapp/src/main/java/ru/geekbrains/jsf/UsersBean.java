@@ -14,7 +14,7 @@ public class UsersBean implements Serializable {
 
 
     @EJB
-    private UserService userService;
+    private UserServiceLocalBean userService;
 
     @Inject
     private RoleService roleRepository;

@@ -13,7 +13,7 @@ public class EjbClient {
     public static void main(String[] args) throws IOException, NamingException {
         Context context = createInitialContext();
 
-        UserServiceRemoteBean usr = (UserServiceRemoteBean) context.lookup("ejb:/simple-webapp//UserServiceBean!ru.geekbrains.jsf.UserServiceRemoteBean");
+        UserServiceRemoteBean usr = (UserServiceRemoteBean) context.lookup("ejb:/myfirstwebapp//UserServiceBean!ru.geekbrains.jsf.UserServiceRemoteBean");
         usr.getAllUsers()
                 .forEach(u -> System.out.printf("%d\t%s%n", u.getId(), u.getLogin()));
 

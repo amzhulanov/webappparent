@@ -3,6 +3,8 @@ package ru.geekbrains.jsf;
 import javax.ejb.Local;
 import java.util.List;
 
+//интерфейс для EJB клиента
+
 @Local
 public interface UserServiceLocalBean {
 

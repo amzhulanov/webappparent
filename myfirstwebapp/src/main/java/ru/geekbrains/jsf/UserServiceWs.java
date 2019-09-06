@@ -11,4 +11,12 @@ public interface UserServiceWs {
 
     @WebMethod
     List<UserRepr> getAllUsers();
+
+    @WebMethod
+    UserRepr findById(int id);
+
+    @WebMethod
+    void delete(int id);
+
+
 }
